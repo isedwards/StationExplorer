@@ -11,24 +11,24 @@
         Dim dataAdapter As New MySql.Data.MySqlClient.MySqlDataAdapter
         Dim ds As New DataSet
         Dim item As New ListViewItem
-        Dim stationId As String
+        'Dim stationId As String
         Dim stationName As String
         Dim sql As String
         Dim totalRows As Integer
 
         Try
-            sql = "SELECT stationId, stationName FROM station LIMIT 50;"
+            sql = "SELECT stationName FROM station LIMIT 50;"
             dataAdapter = New MySql.Data.MySqlClient.MySqlDataAdapter(sql, frmLogin.dbConnection)
             dataAdapter.Fill(ds, "station")
             listViewToPopulate.Columns.Clear()
-            listViewToPopulate.Columns.Add("Station Id", 80)
+            'listViewToPopulate.Columns.Add("Station Id", 80)
             listViewToPopulate.Columns.Add("Station Name", 200)
             totalRows = ds.Tables("station").Rows.Count
 
             For count = 0 To totalRows - 1 Step 1
-                stationId = ds.Tables("station").Rows(count).Item("stationId")
+                'stationId = ds.Tables("station").Rows(count).Item("stationId")
                 stationName = ds.Tables("station").Rows(count).Item("stationName")
-                item = New ListViewItem({stationId, stationName})
+                item = New ListViewItem({stationName})
                 listViewToPopulate.Items.Add(item)
             Next
         Catch ex As Exception
