@@ -13,6 +13,7 @@
         Dim usernamePassword As String = "uid=" & txtUserName.Text & ";" &
             "pwd=" & txtPassword.Text & ";"
         dbConnection.ConnectionString = connectionDetails & usernamePassword
+        MsgBox("Login Successiful")
         Try
             dbConnection.Open()
             Me.Hide()
